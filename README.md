@@ -120,7 +120,8 @@ wechat_helper/
 ├── wechat-draft-publish/
 │   ├── SKILL.md                          # 发布技能定义 + 工作流
 │   ├── wechat_api.py                     # 微信API调用脚本
-│   └── wechat-api-reference.md           # API完整参考
+│   ├── wechat-api-reference.md           # API完整参考
+│   └── wechat-layout-guide.md            # 排版兼容规范
 └── README.md
 ```
 

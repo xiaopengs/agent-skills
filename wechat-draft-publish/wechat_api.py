@@ -124,7 +124,9 @@ def create_draft(token, title, content, thumb_media_id, author="", digest="",
         article["content_source_url"] = content_source_url
 
     body = {"articles": [article]}
-    resp = requests.post(url, params=params, json=body, timeout=30)
+    # 使用 ensure_ascii=False 避免中文被转义成 \uXXXX
+    resp = requests.post(url, params=params, data=json.dumps(body, ensure_ascii=False).encode("utf-8"), 
+                         headers={"Content-Type": "application/json; charset=utf-8"}, timeout=30)
     data = resp.json()
     if "media_id" not in data:
         return {"success": False, "error": data}

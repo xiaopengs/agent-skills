@@ -201,6 +201,7 @@ python scripts/wechat_api.py update_draft --token TOKEN --media_id MEDIA_ID --in
 
 ### 参考文档
 - [wechat-api-reference.md](wechat-api-reference.md): 微信公众号API完整参考
+- [wechat-layout-guide.md](wechat-layout-guide.md): 微信公众号排版兼容规范（必读，避免样式被过滤）
 - 微信官方文档: https://developers.weixin.qq.com/doc/offiaccount/Draft_Box/Add_draft.html
 - MCP参考项目: https://github.com/kakaxi3019/wechat_oa_mcp
 
