@@ -60,6 +60,33 @@
 
 ---
 
+### 📤 wechat-draft-publish
+
+**公众号草稿发布技能**
+
+将排版好的HTML文章一键发布到公众号草稿箱，支持封面图上传、正文图片上传、草稿创建、草稿发布全流程。
+
+**核心能力**：
+- Access Token 获取与管理
+- 正文图片上传（外部URL→微信URL，避免被过滤）
+- 封面图上传（获取永久素材 media_id）
+- 一键发布：图片处理→封面上传→草稿创建，一步到位
+- 草稿管理：查询/更新/删除草稿
+- 发布管理：提交发布+状态查询
+
+**使用方式**：
+- 一键发布：提供HTML文件+封面图路径，自动完成全流程
+- 分步执行：逐步上传图片→创建草稿→发布
+
+**前置条件**：
+- 已认证的服务号/订阅号（个人公众号无API权限）
+- AppID + AppSecret
+- 服务器IP白名单配置
+
+→ [查看详情](wechat-draft-publish/)
+
+---
+
 ## 安装方式
 
 从本地安装 skill 文件：
@@ -90,6 +117,12 @@ wechat_helper/
 │   └── references/
 │       ├── style-guide.md                # 风格规范（10做+10不做）
 │       └── templates.md                  # 各类模板
+├── wechat-draft-publish/
+│   ├── SKILL.md                          # 发布技能定义 + 工作流
+│   ├── scripts/
+│   │   └── wechat_api.py                 # 微信API调用脚本
+│   └── references/
+│       └── wechat-api-reference.md       # API完整参考
 └── README.md
 ```
 
