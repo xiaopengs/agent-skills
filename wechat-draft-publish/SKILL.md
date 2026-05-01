@@ -197,10 +197,10 @@ python scripts/wechat_api.py update_draft --token TOKEN --media_id MEDIA_ID --in
 ## 资源索引
 
 ### 脚本文件
-- [scripts/wechat_api.py](scripts/wechat_api.py): 微信公众号API调用脚本
+- [wechat_api.py](wechat_api.py): 微信公众号API调用脚本
 
 ### 参考文档
-- [references/wechat-api-reference.md](references/wechat-api-reference.md): 微信公众号API完整参考
+- [wechat-api-reference.md](wechat-api-reference.md): 微信公众号API完整参考
 - 微信官方文档: https://developers.weixin.qq.com/doc/offiaccount/Draft_Box/Add_draft.html
 - MCP参考项目: https://github.com/kakaxi3019/wechat_oa_mcp
 

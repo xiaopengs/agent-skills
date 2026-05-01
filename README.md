@@ -119,10 +119,8 @@ wechat_helper/
 │       └── templates.md                  # 各类模板
 ├── wechat-draft-publish/
 │   ├── SKILL.md                          # 发布技能定义 + 工作流
-│   ├── scripts/
-│   │   └── wechat_api.py                 # 微信API调用脚本
-│   └── references/
-│       └── wechat-api-reference.md       # API完整参考
+│   ├── wechat_api.py                     # 微信API调用脚本
+│   └── wechat-api-reference.md           # API完整参考
 └── README.md
 ```
 
