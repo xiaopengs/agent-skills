@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentSkills — OpenClaw 技能包</title>
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --surface: #18181c;
+      --border: #2a2a32;
+      --accent: #f5a623;
+      --accent2: #e8542a;
+      --text: #e8e8ec;
+      --muted: #7a7a8a;
+      --green: #3dd68c;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(245,166,35,0.12);
+      border: 1px solid rgba(245,166,35,0.3);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+    .hero .cta-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      color: #fff;
+      border: none;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); text-decoration: none; }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 60px 0;
+    }
+
+    /* ── Skill Card ── */
+    .skill-section { padding-bottom: 80px; }
+    .skill-section .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .skill-section h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .skill-section .skill-desc {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 36px;
+    }
+
+    /* Radar / Dimensions */
+    .dimensions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .dim-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .dim-card .dim-name {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .dim-card .dim-weight {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .dim-card .dim-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+    .dim-card .dim-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+    }
+
+    /* Trigger scenarios */
+    .triggers {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 28px;
+    }
+    .triggers h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+    .trigger-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .trigger-list li {
+      font-size: 13px;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+    }
+    .trigger-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* Output */
+    .outputs {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .output-tag {
+      background: rgba(61,214,140,0.1);
+      border: 1px solid rgba(61,214,140,0.25);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* Formula */
+    .formula-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin: 36px 0;
+    }
+    .formula-section h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .formula-tag {
+      display: inline-block;
+      background: rgba(245,166,35,0.1);
+      border: 1px solid rgba(245,166,35,0.3);
+      color: var(--accent);
+      font-size: 12px;
+      font-family: 'Courier New', monospace;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin: 4px 4px 4px 0;
+    }
+
+    /* Install */
+    .install-box {
+      background: #0a0a0c;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: var(--green);
+      margin-top: 20px;
+    }
+    .install-box .comment { color: var(--muted); }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="badge">OpenClaw Skill</div>
+    <h1>AgentSkills</h1>
+    <p>让 AI 真正能打的内容利器。<br>精选高质量技能，每一个都能独立安装、即插即用。</p>
+    <div class="cta-group">
+      <a href="#wechat-explosive-analyzer" class="btn btn-primary">查看技能 →</a>
+      <a href="https://github.com/xiaopengs/agent-skills" class="btn btn-outline" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Skill: wechat-explosive-analyzer -->
+  <section class="skill-section" id="wechat-explosive-analyzer">
+    <div class="section-label">Skill 01</div>
+    <h2>🔥 wechat-explosive-analyzer</h2>
+    <p class="skill-desc">公众号 · 视频号爆款内容六维审核分析器</p>
+
+    <div class="dimensions">
+      <div class="dim-card">
+        <div class="dim-name">标题强度</div>
+        <div class="dim-weight">权重 30%</div>
+        <div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-name">开头钩子</div>
+        <div class="dim-weight">权重 20%</div>
+        <div class="dim-bar"><div class="dim-fill" style="width:70%"></div></div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-name">选题切口</div>
+        <div class="dim-weight">权重 25%</div>
+        <div class="dim-bar"><div class="dim-fill" style="width:75%"></div></div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-name">结构与节奏</div>
+        <div class="dim-weight">权重 15%</div>
+        <div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-name">社交货币</div>
+        <div class="dim-weight">权重 10%</div>
+        <div class="dim-bar"><div class="dim-fill" style="width:55%"></div></div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-name">算法适配</div>
+        <div class="dim-weight">参考项</div>
+        <div class="dim-bar"><div class="dim-fill" style="width:65%"></div></div>
+      </div>
+    </div>
+
+    <div class="triggers">
+      <h3>触发方式</h3>
+      <ul class="trigger-list">
+        <li>提供公众号文章链接 mp.weixin.qq.com</li>
+        <li>提供视频号链接 weixin.qq.com/sph</li>
+        <li>粘贴文章草稿 / 视频脚本</li>
+        <li>对比两篇内容（爆款 vs 目标）</li>
+        <li>诊断低流量内容</li>
+        <li>要求做 Content Audit</li>
+      </ul>
+    </div>
+
+    <div class="outputs">
+      <span class="output-tag">✓ 爆款潜力判定</span>
+      <span class="output-tag">✓ 核心瓶颈定位</span>
+      <span class="output-tag">✓ 六维评分 + 依据</span>
+      <span class="output-tag">✓ 可落地修改方案</span>
+      <span class="output-tag">✓ 选题替代方案</span>
+      <span class="output-tag">✓ AIGC检测风险标记</span>
+    </div>
+
+    <div class="formula-section">
+      <h3>标题公式库（2025已验证）</h3>
+      <span class="formula-tag">人群 + 反常结果 + 悬念</span>
+      <span class="formula-tag">数字 + 痛点 + 解决方案</span>
+      <span class="formula-tag">热点产品 + 垂直角度</span>
+      <span class="formula-tag">反常识 + 身份锚定</span>
+      <span class="formula-tag">名人背书 + 冲突 + 反转</span>
+    </div>
+
+    <div class="install-box">
+      <span class="comment"># 从 GitHub 安装</span><br>
+      clawhub install xiaopengs/agent-skills/wechat-explosive-analyzer<br><br>
+      <span class="comment"># 或下载 .skill 文件后本地安装</span><br>
+      clawhub install ./wechat-explosive-analyzer.skill
+    </div>
+  </section>
+
+  <!-- More coming -->
+  <section style="padding: 48px 0 80px; text-align: center; color: var(--muted);">
+    <p style="font-size: 15px;">更多技能正在路上 🔜</p>
+    <p style="font-size: 13px; margin-top: 8px;">爆款标题批量生成器 · 选题热度追踪器 · 小红书爆款分析</p>
+  </section>
+
+  <div class="footer">
+    <a href="https://github.com/xiaopengs/agent-skills" style="color: var(--muted);">github.com/xiaopengs/agent-skills</a>
+    · OpenClaw AgentSkills
+  </div>
+
+</div>
+
+</body>
+</html>
