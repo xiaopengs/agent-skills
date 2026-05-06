@@ -186,7 +186,9 @@ def update_draft(token, media_id, index, title, content, thumb_media_id, author=
         article["content_source_url"] = content_source_url
 
     body = {"media_id": media_id, "index": index, "articles": article}
-    resp = requests.post(url, params=params, json=body, timeout=30)
+    # 使用 ensure_ascii=False 避免中文被转义成 \uXXXX
+    resp = requests.post(url, params=params, data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
+                         headers={"Content-Type": "application/json; charset=utf-8"}, timeout=30)
     data = resp.json()
     return {"success": data.get("errcode", -1) == 0, "errmsg": data.get("errmsg", "")}
 
